@@ -3,8 +3,11 @@ const axios = require('axios');
 const path = require("path");
 const app = express();
 var bodyParser = require('body-parser');
+require('dotenv').config();
+const PORT = process.env.PORT || 5500;
+const base_url = process.env.BACKENDURL;
 
-const base_url = "http://10.104.17.148";
+// const base_url = "http://noderest04.proen.app.ruk-com.cloud";
 
 app.set("views",path.join(__dirname,"/public/views"));
 app.set('view engine','ejs');
@@ -51,7 +54,7 @@ app.post("/create",async(req, res) =>{
 app.get("/update/:id", async (req, res) => {
     try{
         const response = await axios.get(base_url + '/books/' + req.params.id);
-        res.render("update", { books: response.data});
+        res.render("update", { book: response.data});
     } catch (err){
         console.error(err);
         res.status(500).send('Error');
@@ -81,6 +84,6 @@ app.get("/delete/:id", async (req, res) => {
 
 
 
-app.listen(5500, () => {
+app.listen(PORT, () => {
     console.log('Sever started on post 5500');
 });
