@@ -5,9 +5,9 @@ const app = express();
 var bodyParser = require('body-parser');
 require('dotenv').config();
 const PORT = process.env.PORT || 5500;
-const base_url = process.env.BACKENDURL;
+// const base_url = process.env.BACKENDURL;
 
-// const base_url = "http://noderest04.proen.app.ruk-com.cloud";
+const base_url = "http://localhost:3000";
 
 app.set("views",path.join(__dirname,"/public/views"));
 app.set('view engine','ejs');
